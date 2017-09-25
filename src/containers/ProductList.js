@@ -12,13 +12,13 @@ class ProductList extends Component {
         // applied to the component as a `product` property
         return (
             <ul className="ProductList">
-
+              {products.map(element => (<Product product={element}/>))}
             </ul>
         );
     }
 }
 
-// Using the `mapStateToProps` function, filter the array stored in the 
+// Using the `mapStateToProps` function, filter the array stored in the
 // state `products` property based on 3 criterea:
 // - `underTwenty`
 // - `overTwenty`
@@ -26,15 +26,15 @@ class ProductList extends Component {
 const mapStateToProps = function(state) {
     let products;
     // complete the `if else` statement including conditions and `products` value
-    if () {
-
-    } else if () {
-
+    if (state.filter === 'overTwenty') {
+      products = state.products.filter( element => element.price>20);
+    } else if (state.filter === 'underTwenty') {
+      products = state.products.filter( element => element.price<20);
     } else {
-
+      products = state.products
     }
-
-    return {products: products}
+    return {products}
 }
+
 
 export default connect(mapStateToProps)(ProductList);
